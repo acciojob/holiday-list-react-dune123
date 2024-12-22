@@ -32,10 +32,21 @@ const App = () => {
     { name: 'Mount Abu', country: 'India' },
     { name: 'Tirupati', country: 'India' },
     ]
-    
+    const [filterdArr,setFilterArr] = useState([]);
+    useEffect(()=>{
+      setFilterArr(cityList.filter((item)=>item.country==='India'));
+    },[])
+
   return (
     <div id="main">
-               {/* Do not remove the main div */}
+        <h1>Cities in India</h1>
+        <ol>
+          {
+            filterdArr.map((item,index)=>(
+              <li key={index}>{item.name}</li>
+            ))
+          }
+        </ol>
     </div>
   )
 }
